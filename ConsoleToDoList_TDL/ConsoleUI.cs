@@ -6,7 +6,7 @@ public class ConsoleUi
     {
         DisplayAppLogo();
 
-        Console.WriteLine("Choose an action (1-4):");
+        Console.WriteLine("Choose an action (1-5):");
         Console.WriteLine("1. Add task");
         Console.WriteLine("2. Remove task");
         Console.WriteLine("3. Mark task as completed");

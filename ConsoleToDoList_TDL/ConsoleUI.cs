@@ -11,7 +11,8 @@ public class ConsoleUi
         Console.WriteLine("2. Remove task");
         Console.WriteLine("3. Mark task as completed");
         Console.WriteLine("4. Display all tasks");
-        Console.WriteLine("5. Exit");
+        Console.WriteLine("5. Edit task");
+        Console.WriteLine("6. Exit");
 
         GetUserInput();
     }
@@ -42,6 +43,10 @@ public class ConsoleUi
                 BackToMainMenu();
                 break;
             case ConsoleKey.D5:
+                DisplayAppLogo();
+                TaskManager.EditTask();
+                break;
+            case ConsoleKey.D6:
                 Environment.Exit(0);
                 break;
             default:

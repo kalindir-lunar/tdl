@@ -19,6 +19,50 @@ public class TaskManager
         ConsoleUi.ShowMenu();
     }
 
+    public static void EditTask()
+    {
+        LoadTasksFromFile();
+        if (tasks.Count == 0)
+        {
+            ConsoleUi.PrintText("There are no tasks to edit.");
+            ConsoleUi.BackToMainMenu();
+        }
+        
+        ConsoleUi.PrintText("Input task number to edit and press Enter or any other key to exit:");
+        DisplayAllTasks();
+        
+        if (int.TryParse(Console.ReadLine(), out int taskNumber))
+        {
+        }
+        else
+        {
+            ConsoleUi.PrintText("Please enter a number!", ConsoleColor.Red);
+            ConsoleUi.ShowMenu();
+        }
+        
+        LoadTasksFromFile();
+        
+        if (taskNumber <= tasks.Count && taskNumber >= 0)
+        {
+            string oldDescription = tasks[taskNumber - 1].Description;
+            ConsoleUi.PrintText("Input new description for chosen task:");
+            string newDescription = Console.ReadLine();
+            tasks[taskNumber - 1].Description = newDescription;
+            SaveTasksToFile(tasks);
+            
+            ConsoleUi.PrintText($"Edit task {oldDescription} successfully to {newDescription}!", ConsoleColor.Green);
+            Thread.Sleep(1500);
+        }
+        else
+        {
+            ConsoleUi.PrintText("Task number is out of tasks range!", ConsoleColor.Red);
+            Thread.Sleep(1500);
+            ConsoleUi.ShowMenu();
+        }
+
+        ConsoleUi.ShowMenu();
+    }
+
     public static void RemoveTask()
     {
         LoadTasksFromFile();
